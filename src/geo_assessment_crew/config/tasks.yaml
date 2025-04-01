@@ -1,0 +1,31 @@
+# Task definitions for the Geotechnical Assessment Crew
+
+extract_requirements_task:
+  description: 'Analyze the input project brief: "{project_brief}" to identify site location, structure type, and estimated foundation loads.'
+  expected_output: 'A structured summary (using bullet points) listing the identified project parameters: Site Location, Structure Type, Estimated Loads.'
+  agent: project_brief_analyst
+
+review_data_task:
+  description: 'Process the provided geotechnical site data summary: "{site_data_summary}". Identify main soil layers, depths, and key properties (soil type, N-value, cohesion, friction angle if available).'
+  expected_output: 'A summary list identifying distinct soil layers and their key properties (e.g., Layer 1: 0-5m, Sand, N=15; Layer 2: 5-10m, Clay, Su=50kPa).'
+  agent: geotechnical_data_reviewer
+  context: # Tasks this depends on
+    - extract_requirements_task
+
+bearing_capacity_task:
+  description: 'Using the summarized soil properties and estimated foundation loads from previous tasks, calculate an estimated bearing capacity. Use a standard simplified formula (e.g., Terzaghi for an assumed shallow square foundation 2m x 2m at 1m depth). State your assumptions clearly. Calculate the estimated bearing pressure from the loads. Compare capacity vs pressure.'
+  expected_output: 'A numerical value for the estimated bearing capacity (e.g., in kPa), the estimated bearing pressure (kPa), a statement comparing capacity vs pressure, and a bulleted list of key assumptions made (foundation dimensions, depth, formula used etc.).'
+  agent: junior_geotechnical_engineer
+  context: # Tasks this depends on
+    - extract_requirements_task
+    - review_data_task
+
+reporting_task:
+  description: 'Create a brief preliminary geotechnical summary report in markdown format. Combine the outputs from the previous tasks into sections: 1. Project Overview, 2. Site Data Summary, 3. Preliminary Analysis Results, 4. Brief Remarks/Recommendations based *only* on the comparison in the analysis task.'
+  expected_output: 'A concise markdown report file integrating the findings from the previous tasks into the specified sections. Ensure professional language and clear formatting. Do not include markdown code fences (\`\`\`) around the final report content.'
+  agent: technical_report_summarizer
+  output_file: 'output/preliminary_geo_report.md' # Define the output file path
+  context: # Tasks this depends on
+    - extract_requirements_task
+    - review_data_task
+    - bearing_capacity_task
