@@ -1,11 +1,22 @@
 #!/usr/bin/env python
 import os
+import sys
+from dotenv import load_dotenv
 from crew import GeoAssessmentCrew
+
+# Load environment variables from .env file
+load_dotenv()
 
 def run():
     """
     Run the Geotechnical Assessment crew.
     """
+    # Check for OpenAI API key
+    if not os.environ.get("OPENAI_API_KEY"):
+        print("Error: OPENAI_API_KEY environment variable not set.")
+        print("Please ensure you have a .env file with your API key or set it in your environment.")
+        sys.exit(1)
+        
     # Define inputs for the kickoff
     project_brief_input = """
     Project: New Warehouse Construction
@@ -29,35 +40,41 @@ def run():
     }
 
     # Create the output directory if it doesn't exist
-    # Assuming the output_file in tasks.yaml specifies 'output/...'
-    if not os.path.exists('output'):
-        os.makedirs('output')
+    try:
+        if not os.path.exists('output'):
+            os.makedirs('output')
+            print("Created output directory.")
+    except Exception as e:
+        print(f"Error creating output directory: {e}")
+        sys.exit(1)
 
     # Instantiate and run the crew
-    # The .crew() method accesses the crew defined by the @crew decorator
-    result = GeoAssessmentCrew().crew().kickoff(inputs=inputs)
+    try:
+        print("Starting GeoAssessmentCrew execution...")
+        result = GeoAssessmentCrew().crew().kickoff(inputs=inputs)
 
-    print("\n\n########################")
-    print("## Crew Execution Finished")
-    print("########################\n")
-    print("Final Crew Result:")
-    # The final result depends on the last task's output configuration.
-    # If the last task writes to a file, the result might be the content or confirmation.
-    print(result)
+        print("\n\n########################")
+        print("## Crew Execution Finished")
+        print("########################\n")
+        print("Final Crew Result:")
+        print(result)
 
-    # Confirm the output file was created based on the task definition
-    report_file = 'output/preliminary_geo_report.md' # Matches output_file in tasks.yaml
-    if os.path.exists(report_file):
-        print(f"\nReport successfully saved to: {report_file}")
-    else:
-        # If the result contains the markdown, print it directly
-        if isinstance(result, str) and result.startswith("#"): # Basic check for markdown
-             print("\n--- Final Report Content (from result) ---")
-             print(result)
-             print("----------------------------------------")
+        # Confirm the output file was created based on the task definition
+        report_file = 'output/preliminary_geo_report.md' # Matches output_file in tasks.yaml
+        if os.path.exists(report_file):
+            print(f"\nReport successfully saved to: {report_file}")
         else:
-            print(f"\nError: Report file '{report_file}' was not created, and result object does not appear to be the report content.")
-            print("Result object:", result)
+            # If the result contains the markdown, print it directly
+            if isinstance(result, str) and result.startswith("#"): # Basic check for markdown
+                 print("\n--- Final Report Content (from result) ---")
+                 print(result)
+                 print("----------------------------------------")
+            else:
+                print(f"\nWarning: Report file '{report_file}' was not created, and result object does not appear to be the report content.")
+                print("Result object:", result)
+    except Exception as e:
+        print(f"Error during crew execution: {e}")
+        sys.exit(1)
 
 
 if __name__ == "__main__":

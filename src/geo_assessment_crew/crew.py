@@ -66,5 +66,6 @@ class GeoAssessmentCrew():
             agents=self.agents,
             tasks=self.tasks,
             process=Process.sequential,
-            verbose=2,
+            verbose=True,
+            telemetry=False  # Changed from config={"telemetry": False} to direct parameter
         )

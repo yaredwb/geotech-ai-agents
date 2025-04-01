@@ -44,7 +44,7 @@ This serves as a basic example of applying AI agent collaboration to a typical g
 1.  **Clone the repository:**
     ```bash
     git clone https://github.com/yaredwb/geotech_ai_agents.git
-    cd YOUR_REPONAME
+    cd geotech_ai_agents
     ```
 
 2.  **Create a virtual environment (recommended):**
