@@ -19,19 +19,22 @@ This serves as a basic example of applying AI agent collaboration to a typical g
 
 ## Project Structure
 
-geotech_ai_agenets/
-├── .env                  # For API keys (especially OPENAI_API_KEY)
-├── pyproject.toml        # Project dependencies (managed by Poetry or pip)
-├── README.md             # Project documentation (content provided previously)
-└── src/                  # Source code directory
-    └── geo_assessment_crew/ # Python package for the crew
-        ├── __init__.py     # Makes 'geo_assessment_crew' a package
-        ├── main.py         # Script to run the crew
-        ├── crew.py         # Defines the CrewBase class, agents, tasks, crew
-        └── config/         # Configuration directory
-            ├── __init__.py # Makes 'config' a sub-package
-            ├── agents.yaml   # Agent definitions (role, goal, backstory, llm)
-            └── tasks.yaml    # Task definitions (description, expected_output, agent)
+geotech-ai-agents/
+├── .gitignore
+├── pyproject.toml
+├── README.md
+├── .env
+└── src/
+    └── geotech_crew/
+        ├── __init__.py
+        ├── main.py
+        ├── crew.py
+        ├── tools/
+        │   ├── custom_tool.py
+        │   └── __init__.py
+        └── config/
+            ├── agents.yaml
+            └── tasks.yaml
 
 ## Prerequisites
 
