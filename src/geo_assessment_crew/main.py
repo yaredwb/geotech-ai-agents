@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import os
-from geo_assessment_crew.crew import GeoAssessmentCrew
+from crew import GeoAssessmentCrew
 
 def run():
     """

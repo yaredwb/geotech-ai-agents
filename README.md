@@ -43,7 +43,7 @@ This serves as a basic example of applying AI agent collaboration to a typical g
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/yaredwb/geotech_ai_agents.git](https://github.com/yaredwb/geotech_ai_agents.git) # Replace with your actual repo URL
+    git clone https://github.com/yaredwb/geotech_ai_agents.git
     cd YOUR_REPONAME
     ```
 
@@ -67,7 +67,7 @@ This serves as a basic example of applying AI agent collaboration to a typical g
         ```
 
 4.  **Set up Environment Variables:**
-    Create a file named `.env` in the project root directory (`YOUR_REPONAME/.env`). Add your OpenAI API key to this file:
+    Create a file named `.env` in the project root directory (`geotech_ai_agents/.env`). Add your OpenAI API key to this file:
     ```plaintext
     OPENAI_API_KEY=sk-YOUR_OPENAI_API_KEY_HERE
     # You can optionally specify the model, though it's also set in agents.yaml
