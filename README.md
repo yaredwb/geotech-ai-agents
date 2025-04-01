@@ -43,7 +43,7 @@ This serves as a basic example of applying AI agent collaboration to a typical g
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/YOUR_USERNAME/YOUR_REPONAME.git](https://www.google.com/search?q=https://github.com/YOUR_USERNAME/YOUR_REPONAME.git) # Replace with your actual repo URL
+    git clone [https://github.com/yaredwb/geotech_ai_agents.git](https://github.com/yaredwb/geotech_ai_agents.git) # Replace with your actual repo URL
     cd YOUR_REPONAME
     ```
 
