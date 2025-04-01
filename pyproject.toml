@@ -2,14 +2,14 @@
 name = "geo-assessment-crew"
 version = "0.1.0"
 description = "CrewAI project for preliminary geotechnical assessment"
-authors = ["Your Name <you@example.com>"] # Change as needed
+authors = ["Your Name <you@example.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-crewai = "^0.35.8" # Or the latest version
-crewai-tools = "^0.2.6" # Or the latest version
-langchain-openai = "^0.1.8" # Needed for OpenAI LLM interaction
+crewai = "^0.35.8"
+crewai-tools = "^0.2.6"
+langchain-openai = "^0.1.8"
 python-dotenv = "^1.0.1"
 
 [tool.poetry.group.dev.dependencies]
@@ -20,9 +20,6 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.pyright]
-# Configuration for Pyright if you use it
 
 [tool.ruff]
-# Configuration for Ruff linter/formatter if you use it
 line-length = 88
-# Add other Ruff rules as desired
