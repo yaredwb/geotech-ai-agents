@@ -19,22 +19,19 @@ This serves as a basic example of applying AI agent collaboration to a typical g
 
 ## Project Structure
 
-geotech-ai-agents/
-├── .gitignore
-├── pyproject.toml
-├── README.md
-├── .env
-└── src/
-    └── geotech_crew/
-        ├── __init__.py
-        ├── main.py
-        ├── crew.py
-        ├── tools/
-        │   ├── custom_tool.py
-        │   └── __init__.py
-        └── config/
-            ├── agents.yaml
-            └── tasks.yaml
+* `geotech_ai_agents/`
+    * `- .env`
+    * `- pyproject.toml`
+    * `- README.md`
+    * `- src/`
+        * `- geo_assessment_crew/`
+            * `- __init__.py`
+            * `- main.py`
+            * `- crew.py`
+            * `- config/`
+                * `- __init__.py`
+                * `- agents.yaml`
+                * `- tasks.yaml`
 
 ## Prerequisites
 
