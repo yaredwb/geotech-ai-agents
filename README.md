@@ -77,7 +77,40 @@ This serves as a basic example of applying AI agent collaboration to a typical g
 
 ## Running the Crew
 
-Ensure your virtual environment is activated. Run the main script from the project root directory:
+Ensure your virtual environment is activated. The main script supports several ways to run the application:
+
+### Default Mode
+Uses built-in sample data for project brief and site information:
 
 ```bash
 python src/geo_assessment_crew/main.py
+```
+
+### Interactive Mode
+Prompts for project brief and site data inputs with the option to use default values:
+
+```bash
+python src/geo_assessment_crew/main.py --interactive
+```
+
+### File Input Mode
+Read project brief and/or site data from text files:
+
+```bash
+python src/geo_assessment_crew/main.py --brief path/to/brief-file --site-data path/to/site_data-file
+```
+
+### Combined Modes
+You can combine interactive mode with file inputs. For example, to use a file for the project brief but provide site data interactively:
+
+```bash
+python src/geo_assessment_crew/main.py --interactive --brief path/to/brief-file
+```
+
+## Output
+The application generates a markdown report file at `output/preliminary_geo_report.md`. When the execution completes, you'll be asked if you want to display the report content in the terminal.
+
+## Customization
+- Modify agent behavior by editing `config/agents.yaml`
+- Adjust task definitions in `config/tasks.yaml`
+- For more advanced customization, you can modify the crew structure in crew.py
